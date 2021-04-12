@@ -626,13 +626,13 @@ var cxtmenu = function cxtmenu(params) {
         theta2 += dtheta;
       }
       queueDrawCommands(rx, ry, r, theta, rs);
-    }).on('tapdrag', dragHandler).on('cxttapend tapend', function () {
+    }).on('tapdrag', dragHandler).on('cxttapend tapend', function (e) {
       parent.style.display = 'none';
       if (activeCommandI !== undefined) {
         var select = commands[activeCommandI].select;
 
         if (select) {
-          select.apply(target, [target, gestureStartEvent]);
+          select.apply(target, [target, gestureStartEvent, e]);
           activeCommandI = undefined;
         }
       }

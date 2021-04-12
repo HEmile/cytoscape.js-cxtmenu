@@ -539,13 +539,13 @@ let cxtmenu = function(params){
 
       .on('tapdrag', dragHandler)
 
-      .on('cxttapend tapend', function(){
+      .on('cxttapend tapend', function(e){
         parent.style.display = 'none';
         if( activeCommandI !== undefined ){
           let select = commands[ activeCommandI ].select;
 
           if( select ){
-            select.apply( target, [target, gestureStartEvent] );
+            select.apply( target, [target, gestureStartEvent, e] );
             activeCommandI = undefined;
           }
         }
